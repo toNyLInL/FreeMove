@@ -1,4 +1,4 @@
-﻿// FreeMove -- Move directories without breaking shortcuts or installations 
+// FreeMove -- Move directories without breaking shortcuts or installations 
 //    Copyright(C) 2020  Luca De Martini
 
 //    This program is free software: you can redistribute it and/or modify
@@ -73,6 +73,8 @@ namespace FreeMove
                     fullToolStripMenuItem.Checked = true;
                     break;
             }
+
+            chkBox_migrationTrace.Checked = Settings.TraceFile;
         }
 
         #endregion
@@ -109,6 +111,9 @@ namespace FreeMove
                 {
                     await BeginMove(source, destination);
                     Symlink(destination, source);
+
+                    if (chkBox_migrationTrace.Checked)
+                        IO.MigrationTrace.Write(source, destination);
 
                     if (chkBox_originalHidden.Checked)
                     {
@@ -233,6 +238,8 @@ namespace FreeMove
             Tip.SetToolTip(this.textBox_From, "Select the folder you want to move");
             Tip.SetToolTip(this.textBox_To, "Select where you want to move the folder");
             Tip.SetToolTip(this.chkBox_originalHidden, "Select whether you want to hide the shortcut which is created in the old location or not");
+
+            Tip.SetToolTip(this.chkBox_migrationTrace, "Write a traceability .ini file (FreeMove-Migration.ini) into the moved folder recording source, destination and time");
         }
 
         private void Reset()
@@ -248,6 +255,12 @@ namespace FreeMove
         }
 
         #region Event Handlers
+
+        //Save the migration trace checkbox choice
+        private void ChkBox_MigrationTrace_Click(object sender, EventArgs e)
+        {
+            Settings.TraceFile = chkBox_migrationTrace.Checked;
+        }
 
         private void Button_Move_Click(object sender, EventArgs e)
         {

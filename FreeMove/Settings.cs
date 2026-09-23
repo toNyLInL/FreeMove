@@ -39,6 +39,8 @@ namespace FreeMove
 
         public PermissionCheckLevel PermissionCheck = PermissionCheckLevel.Fast;
 
+        public bool MigrationTrace = true;
+
         public static bool AutoUpdate
         {
             set
@@ -65,6 +67,21 @@ namespace FreeMove
             {
                 var LSett = Load();
                 LSett.PermissionCheck = value;
+                Save(LSett);
+            }
+        }
+
+        public static bool TraceFile
+        {
+            get
+            {
+                var LSett = Load();
+                return LSett.MigrationTrace;
+            }
+            set
+            {
+                var LSett = Load();
+                LSett.MigrationTrace = value;
                 Save(LSett);
             }
         }

@@ -70,6 +70,7 @@ namespace FreeMove
             this.gitHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chkBox_createDest = new System.Windows.Forms.CheckBox();
+            this.chkBox_migrationTrace = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -293,11 +294,25 @@ namespace FreeMove
             this.chkBox_createDest.Text = "Create destination folder";
             this.chkBox_createDest.UseVisualStyleBackColor = true;
             // 
+            // chkBox_migrationTrace
+            // 
+            this.chkBox_migrationTrace.AutoSize = true;
+            this.chkBox_migrationTrace.Checked = true;
+            this.chkBox_migrationTrace.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkBox_migrationTrace.Location = new System.Drawing.Point(325, 95);
+            this.chkBox_migrationTrace.Name = "chkBox_migrationTrace";
+            this.chkBox_migrationTrace.Size = new System.Drawing.Size(150, 17);
+            this.chkBox_migrationTrace.TabIndex = 10;
+            this.chkBox_migrationTrace.Text = "Write migration info file";
+            this.chkBox_migrationTrace.UseVisualStyleBackColor = true;
+            this.chkBox_migrationTrace.Click += new System.EventHandler(this.ChkBox_MigrationTrace_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 150);
+            this.Controls.Add(this.chkBox_migrationTrace);
             this.Controls.Add(this.chkBox_createDest);
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.chkBox_originalHidden);
@@ -350,6 +365,7 @@ namespace FreeMove
         private System.Windows.Forms.ToolStripMenuItem fastToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullToolStripMenuItem;
         public System.Windows.Forms.CheckBox chkBox_createDest;
+        public System.Windows.Forms.CheckBox chkBox_migrationTrace;
     }
 }
 
