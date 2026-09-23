@@ -17,7 +17,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Text;
 
 namespace FreeMove.IO
@@ -58,7 +57,7 @@ namespace FreeMove.IO
         {
             try
             {
-                var info = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+                var info = FileVersionInfo.GetVersionInfo(Environment.ProcessPath);
                 return info.FileVersion;
             }
             catch (Exception)

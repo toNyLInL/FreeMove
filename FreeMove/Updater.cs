@@ -1,4 +1,4 @@
-﻿// FreeMove -- Move directories without breaking shortcuts or installations 
+// FreeMove -- Move directories without breaking shortcuts or installations 
 //    Copyright(C) 2020  Luca De Martini
 
 //    This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Net.Http;
 
@@ -42,8 +41,7 @@ namespace FreeMove
         public Updater(bool Silent)
         {
             this.Silent = Silent;
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            this.CurrentVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
+            this.CurrentVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(Environment.ProcessPath).FileVersion;
             InitializeComponent();
         }
 

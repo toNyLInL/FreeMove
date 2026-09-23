@@ -339,7 +339,7 @@ namespace FreeMove
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string msg = String.Format(Properties.Resources.AboutContent, System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion);
+            string msg = String.Format(Properties.Resources.AboutContent, System.Diagnostics.FileVersionInfo.GetVersionInfo(Environment.ProcessPath).FileVersion);
             MessageBox.Show(msg, "About FreeMove");
         }
 
