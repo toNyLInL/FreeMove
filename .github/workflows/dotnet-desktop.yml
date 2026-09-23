@@ -15,26 +15,26 @@ jobs:
         runtime: [win-x64, win-x86]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
-    
+
     env:
       Project_Name: FreeMove
-      Target: net6.0-windows
-      
+      Target: net10.0-windows
+
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v3
+    # Install the .NET workload
+    - name: Install .NET
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 10.0.x
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v2
 
     # Execute all unit tests in the solution
     # - name: Execute unit tests
@@ -44,9 +44,9 @@ jobs:
     - name: Build the solution
       run: dotnet publish -c Release -r ${{ matrix.runtime }}
 
-    # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
+    # Upload the app executable: https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Project_Name }}_${{ matrix.runtime }}.exe
         path: ${{ env.Project_Name }}\bin\Release\${{ env.Target }}\${{ matrix.runtime }}\publish\${{ env.Project_Name }}.exe
