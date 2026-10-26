@@ -49,5 +49,5 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.Project_Name }}_${{ matrix.runtime }}.exe
-        path: ${{ env.Project_Name }}\bin\Release\${{ env.Target }}\${{ matrix.runtime }}\publish\${{ env.Project_Name }}.exe
+        name: ${{ env.Project_Name }}_${{ matrix.runtime }}.zip
+        path: ${{ env.Project_Name }}\bin\Release\${{ env.Target }}\${{ matrix.runtime }}\publish\
